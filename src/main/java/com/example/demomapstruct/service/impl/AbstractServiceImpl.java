@@ -1,10 +1,12 @@
-package com.example.demomapstruct.service;
+package com.example.demomapstruct.service.impl;
 
 import com.example.demomapstruct.dto.AbstractDTO;
 import com.example.demomapstruct.dto.PageObject;
+import com.example.demomapstruct.dto.StudentDTO;
 import com.example.demomapstruct.entity.AbstractEntity;
 import com.example.demomapstruct.mapper.AbstractMapper;
 import com.example.demomapstruct.repository.AbstractRepository;
+import com.example.demomapstruct.service.AbstractService;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +41,10 @@ public abstract class AbstractServiceImpl<T extends AbstractEntity, E extends Ab
         Page<T> page = abstractRepository.<T>findAll(pageable);
         return toPageObject(page);
     }
-
+    @Override
+    public E getById(Long id) {
+         return toDTO(abstractRepository.findById(id).get());
+    }
     @Override
     public E update(E dto) {
         T entity = toEntity(dto);

@@ -1,5 +1,7 @@
 package com.example.demomapstruct.controller;
 
+import com.example.demomapstruct.annotation.RequestMappingGetByID;
+import com.example.demomapstruct.annotation.TrackTime;
 import com.example.demomapstruct.dto.AbstractDTO;
 import com.example.demomapstruct.dto.PageObject;
 import com.example.demomapstruct.entity.AbstractEntity;
@@ -20,7 +22,11 @@ public class AbstractController<T extends AbstractEntity, E extends AbstractDTO>
     public PageObject<E> get(Pageable pageable) {
         return abstractService.get(pageable);
     }
-
+    @RequestMappingGetByID
+    @TrackTime
+    protected ResponseEntity<E> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(abstractService.getById(id));
+    }
     @PostMapping("/create")
     public ResponseEntity<E> create(@RequestBody E dto) {
         return ResponseEntity.ok(abstractService.create(dto));
@@ -35,4 +41,6 @@ public class AbstractController<T extends AbstractEntity, E extends AbstractDTO>
     public ResponseEntity<E> delete(@RequestBody E dto) {
         return ResponseEntity.ok(abstractService.delete(dto));
     }
+
+
 }

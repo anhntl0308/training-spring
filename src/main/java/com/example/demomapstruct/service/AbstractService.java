@@ -13,6 +13,8 @@ public interface AbstractService<T extends AbstractEntity, E extends AbstractDTO
 
     PageObject<E> get(Pageable pageable);
 
+    E getById(Long id);
+
     E update(E dto);
 
     E delete(E dto);
