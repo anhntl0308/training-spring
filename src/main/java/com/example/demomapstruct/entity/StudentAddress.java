@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "student_address")
-@SequenceGenerator(name = "hibernate_sequence", sequenceName = "seq_student_address_id", initialValue = 1, allocationSize=1)
+@SequenceGenerator(name = "hibernate_sequence", sequenceName = "seq_student_address_id", initialValue = 1, allocationSize = 1)
 @Getter
 @Setter
 public class StudentAddress extends AbstractEntity {
@@ -17,14 +17,14 @@ public class StudentAddress extends AbstractEntity {
     private Long addressId;
     @ManyToOne
     @JoinColumn(name = "address_id", referencedColumnName = "address_id", insertable = false, updatable = false)
-    @JsonBackReference("address_studentAddress")
+    @JsonBackReference(value = "address_studentAddress")
     private Address address;
 
     @Column(name="student_id", nullable = false)
     private Long studentId;
     @ManyToOne
     @JoinColumn(name = "student_id", referencedColumnName = "student_id", insertable = false, updatable = false)
-    @JsonBackReference("student_studentAddress")
+    @JsonBackReference(value = "student_studentAddress")
     private Student student;
 
     @Override
@@ -42,5 +42,4 @@ public class StudentAddress extends AbstractEntity {
     public int hashCode(){
         return Objects.hash(super.hashCode(), addressId, studentId);
     }
-
 }

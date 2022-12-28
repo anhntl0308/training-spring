@@ -8,6 +8,7 @@ import lombok.*;
 public class AddressDTO extends AbstractDTO{
 
 //    private Long id;
+
     private String city;
 
     private String fullAddress;

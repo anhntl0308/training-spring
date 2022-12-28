@@ -29,7 +29,7 @@ public class Student extends AbstractEntity{
     @Column(name = "age")
     private int age;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "student")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "student")
     @JsonManagedReference(value = "student_studentAddress")
     private Set<StudentAddress> studentAddressList = new HashSet<>();
 

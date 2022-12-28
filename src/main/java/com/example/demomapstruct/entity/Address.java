@@ -21,7 +21,7 @@ public class Address extends AbstractEntity{
     @Column(name = "full_address")
     private String fullAddress;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "address")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "address")
     @JsonManagedReference(value = "address_studentAddress")
     private Set<StudentAddress> studentAddressList = new HashSet<>();
 
