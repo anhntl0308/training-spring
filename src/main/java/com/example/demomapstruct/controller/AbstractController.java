@@ -6,10 +6,17 @@ import com.example.demomapstruct.dto.AbstractDTO;
 import com.example.demomapstruct.dto.PageObject;
 import com.example.demomapstruct.entity.AbstractEntity;
 import com.example.demomapstruct.service.AbstractService;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+@Getter
+@Setter
+@Validated
 public class AbstractController<T extends AbstractEntity, E extends AbstractDTO> {
 
     private AbstractService<T, E> abstractService;
@@ -28,19 +35,17 @@ public class AbstractController<T extends AbstractEntity, E extends AbstractDTO>
         return ResponseEntity.ok(abstractService.getById(id));
     }
     @PostMapping("/create")
-    public ResponseEntity<E> create(@RequestBody E dto) {
+    public ResponseEntity<E> create(@RequestBody @Valid E dto) {
         return ResponseEntity.ok(abstractService.create(dto));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<E> update(@RequestBody E dto) {
+    public ResponseEntity<E> update(@RequestBody @Valid E dto) {
         return ResponseEntity.ok(abstractService.update(dto));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<E> delete(@RequestBody E dto) {
+    public ResponseEntity<E> delete(@RequestBody @Valid E dto) {
         return ResponseEntity.ok(abstractService.delete(dto));
     }
-
-
 }

@@ -16,4 +16,8 @@ public class StudentAddressServiceImpl extends AbstractServiceImpl<StudentAddres
         super(studentAddressRepository, studentAddressMapper);
     }
 
+    @Override
+    public StudentAddressDTO getOne(Long id) {
+        return null;
+    }
 }

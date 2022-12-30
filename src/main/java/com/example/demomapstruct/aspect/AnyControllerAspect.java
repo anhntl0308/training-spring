@@ -17,6 +17,18 @@ import java.time.ZoneOffset;
 @Component
 @Slf4j
 public class AnyControllerAspect {
+//    @AfterReturning(value = "@annotation(com.example.demomapstruct.annotation.TrackTime)")
+//    public void afterReciveRequest(ProceedingJoinPoint pjp){
+//        LocalDateTime start  = LocalDateTime.now();
+//        try {
+//            pjp.proceed();
+//        } catch (Throwable e) {
+//            throw new RuntimeException(e);
+//        }
+//        LocalDateTime end = LocalDateTime.now();
+//
+//        log.info("Running time {} ms", end.toEpochSecond(ZoneOffset.UTC) - start.toEpochSecond(ZoneOffset.UTC) );
+//    }
 //    @Before(value = "@annotation(com.example.demomapstruct.annotation.MakeChangesInDatabase)")
 //    public void beforeReceiveRequest(JoinPoint jp){
 //        log.info("receive {} change database request from {}", jp.getSignature().getName(), jp.getTarget().getClass().getSimpleName());
@@ -28,19 +40,6 @@ public class AnyControllerAspect {
 //
 //    }
 //
-//    @Around(value = "execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
-//    public void afterReciveRequest(ProceedingJoinPoint pjp){
-//        LocalDateTime start  = LocalDateTime.now();
-//        try {
-//            pjp.proceed();
-//        } catch (Throwable e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        LocalDateTime end = LocalDateTime.now();
-//
-//        log.info("Running time {} ms", end.toEpochSecond(ZoneOffset.UTC) - start.toEpochSecond(ZoneOffset.UTC) );
-//    }
 
 //    @AfterReturning(value = "execution(* com.example.demomapstruct.controller.AbstractController.*(..)))", returning = "res")
 //    public void afterReturningRequest(JoinPoint jp, ResponseEntity res){

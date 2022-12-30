@@ -26,5 +26,5 @@ public interface AbstractService<T extends AbstractEntity, E extends AbstractDTO
 
     AbstractRepository<T> getAbstractRepository();
 
-
+    E getOne(Long id);
 }

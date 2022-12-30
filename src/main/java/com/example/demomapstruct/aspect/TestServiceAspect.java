@@ -12,26 +12,36 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Slf4j
 public class TestServiceAspect {
-//    @Before("execution(* com.example.demomapstruct.controller.AbstractController.*(..)))")
-//    public void before(JoinPoint joinPoint) {
-//        log.info(" before called " + joinPoint.toString());
-//    }
-//
-//    @After("execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
-//    public void after(JoinPoint joinPoint) {
-//        log.info(" after called " + joinPoint.toString());
-//    }
-//
-//    @AfterReturning("execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
-//    public void afterReturning(JoinPoint joinPoint) {
-//        log.info(" afterReturning called " + joinPoint.toString());
-//    }
-//
-//    @AfterThrowing("execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
-//    public void afterThrowing(JoinPoint joinPoint) {
-//        log.info(" afterThrowing called " + joinPoint.toString());
-//    }
-//
+    @Around(value = "@annotation(com.example.demomapstruct.annotation.TrackTime)")
+    public Object aroundTrackTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        Long startTime = System.currentTimeMillis();
+        log.info("Start Time Taken by {} is {}", joinPoint, startTime);
+        Object object = joinPoint.proceed();
+
+        Long timeTaken = System.currentTimeMillis() - startTime;
+        log.info("Time Taken by {} is {}", joinPoint, timeTaken);
+        return object;
+    }
+    @Before("execution(* com.example.demomapstruct.controller.AbstractController.*(..)))")
+    public void before(JoinPoint joinPoint) {
+        log.info(" before called " + joinPoint.toString());
+    }
+
+    @After("execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
+    public void after(JoinPoint joinPoint) {
+        log.info(" after called " + joinPoint.toString());
+    }
+
+    @AfterReturning("execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
+    public void afterReturning(JoinPoint joinPoint) {
+        log.info(" afterReturning called " + joinPoint.toString());
+    }
+
+    @AfterThrowing("execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
+    public void afterThrowing(JoinPoint joinPoint) {
+        log.info(" afterThrowing called " + joinPoint.toString());
+    }
+
 //    @Around("execution(* com.example.demomapstruct.controller.AbstractController.*(..))")
 //    public void around(ProceedingJoinPoint joinPoint) throws Throwable {
 //
@@ -43,13 +53,4 @@ public class TestServiceAspect {
 //        log.info("Time Taken by {} is {}", joinPoint, timeTaken);
 //    }
 //
-    @Around(value = "@annotation(com.example.demomapstruct.annotation.TrackTime)")
-    public void aroundTrackTime(ProceedingJoinPoint joinPoint) throws Throwable {
-        Long startTime = System.currentTimeMillis();
-        log.info("Start Time Taken by {} is {}", joinPoint, startTime);
-        joinPoint.proceed();
-
-        Long timeTaken = System.currentTimeMillis() - startTime;
-        log.info("Time Taken by {} is {}", joinPoint, timeTaken);
-    }
 }

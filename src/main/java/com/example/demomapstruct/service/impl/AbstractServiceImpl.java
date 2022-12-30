@@ -2,14 +2,12 @@ package com.example.demomapstruct.service.impl;
 
 import com.example.demomapstruct.dto.AbstractDTO;
 import com.example.demomapstruct.dto.PageObject;
-import com.example.demomapstruct.dto.StudentDTO;
 import com.example.demomapstruct.entity.AbstractEntity;
 import com.example.demomapstruct.mapper.AbstractMapper;
 import com.example.demomapstruct.repository.AbstractRepository;
 import com.example.demomapstruct.service.AbstractService;
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
