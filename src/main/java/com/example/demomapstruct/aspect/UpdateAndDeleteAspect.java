@@ -20,8 +20,8 @@ public class UpdateAndDeleteAspect {
 
     }
 
-    @AfterThrowing(value = "invalidRequest()", throwing = "ex")
-    public void loggerForInvalidRequest(JoinPoint jp, MethodArgumentNotValidException ex){
-        log.error("Error when execute {} in {} with exception {}", jp.getSignature().getName(), jp.getTarget().getClass().getSimpleName(), ex.getMessage());
-    }
+//    @AfterThrowing(value = "invalidRequest()", throwing = "ex")
+//    public void loggerForInvalidRequest(JoinPoint jp, MethodArgumentNotValidException ex){
+//        log.error("Error when execute {} in {} with exception {}", jp.getSignature().getName(), jp.getTarget().getClass().getSimpleName(), ex.getMessage());
+//    }
 }

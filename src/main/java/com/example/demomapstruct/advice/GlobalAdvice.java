@@ -18,13 +18,13 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalAdvice extends ResponseEntityExceptionHandler {
-    @Override
-    protected @NotNull ResponseEntity<Object> handleNoHandlerFoundException(
-            NoHandlerFoundException ex, @NotNull HttpHeaders headers, @NotNull HttpStatus status, @NotNull WebRequest request) {
-        return ResponseEntity.badRequest().body(BaseResponse.builder().data("Could not find the " + ex.getHttpMethod()+" method for URL "+ ex.getRequestURL())
-                .message("Method Not Found")
-                .build());
-    }
+//    @Override
+//    protected @NotNull ResponseEntity<Object> handleNoHandlerFoundException(
+//            NoHandlerFoundException ex, @NotNull HttpHeaders headers, @NotNull HttpStatus status, @NotNull WebRequest request) {
+//        return ResponseEntity.badRequest().body(BaseResponse.builder().data("Could not find the " + ex.getHttpMethod()+" method for URL "+ ex.getRequestURL())
+//                .message("Method Not Found")
+//                .build());
+//    }
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<?> handleConstraintViolationException(Exception ex, WebRequest request) {
